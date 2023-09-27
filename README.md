@@ -3,7 +3,7 @@
 A Escola de Magia Hogwarts bem que tava precisando deixar as coisas mais tecnológicas para os bruxinhos da Geração Z não é mesmo?
 Então que tal uma API com feitiços administrada por ninguém mais ninguém menos que Alvo Dumbledore? 
 
-![wink-hey-there](https://github.com/joanamds/spellbook-api/assets/106452876/931a2c63-5bd0-4792-8e21-a5a86627c20d)
+![wink-hey-there](https://github.com/joanamds/spellbook-api/assets/106452876/908ea050-3bba-4e36-ab35-92d7248e19a1)
 
 Este código foi desenvolvido para uma monitoria estruturada para praticar os conceitos da criação de API utilizando Node.js, Sequelize e JWT.
 
