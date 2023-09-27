@@ -39,5 +39,5 @@ services:
       - spellbook-network
 
 networks:
-  hp-network:
+  spellbook-network:
     driver: bridge
