@@ -29,14 +29,14 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   SpellType.associate = (models) => {
-    SpellType.belongsToMany(models.Spell, {
-      foreignKey: 'spellId',
+    models.Type.belongsToMany(models.Spell, {
+      foreignKey: 'typeId',
       through: SpellType,
       as: 'spell'
     });
 
-    SpellType.belongsToMany(models.Type, {
-      foreignKey: 'typeId',
+    models.Spell.belongsToMany(models.Type, {
+      foreignKey: 'spellId',
       through: SpellType,
       as: 'type'
     });
