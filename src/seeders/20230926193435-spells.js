@@ -29,9 +29,7 @@ module.exports = {
         incantation: 'Expecto Patronum!',
         effect: 'Dementor Repelling',
       },
-    ], {
-      timestamps: false,
-    });
+    ]);
   },
 
   down: async (queryInterface, Sequelize) => {

@@ -19,6 +19,7 @@ const options = {
     timezone: 'Z',
   },
   logging: process.env.DEBUG !== 'false',
+  define: { underscored: true, timestamps: false },
 };
 
 module.exports = {

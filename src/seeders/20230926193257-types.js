@@ -10,7 +10,7 @@ module.exports = {
           id: 2,
           type_name: 'Spell',
         }
-      ], { timestamps: false });
+      ]);
   },
 
   down: async (queryInterface, _Sequelize) => {
