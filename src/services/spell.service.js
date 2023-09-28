@@ -1,4 +1,4 @@
-const { Spell, Type } = require('../models');
+const { Spell, Type, SpellType } = require('../models');
 const { convertSpellFormat } = require('../helpers');
 
 const getAllSpells = async () => {
@@ -46,9 +46,9 @@ const getSpellById = async (id) => {
 }
 
 const createSpell = async(spell) => {
-  const { spellName, description, incantation, effect, types } = spell;
+  const { spellName, description, incantation, effect, type } = spell;
   const newSpell = await Spell.create({ spellName, description, incantation, effect });
-  await newSpell.setTypes(types);
+  await SpellType.create({ spellId: newSpell.id, typeId: type });
   return { status: 201, message: newSpell };
 }
 

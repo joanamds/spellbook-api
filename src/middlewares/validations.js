@@ -1,4 +1,4 @@
-const { loginService } = require('../services');
+const { loginService, typeService } = require('../services');
 
 const validateLoginBody = (req, res, next) => {
   const { email, password } = req.body;
@@ -126,9 +126,9 @@ const validateIncantation = async (req, res, next) => {
       message: '"incantation" is required'
     })
   }
-  if(incantation.length < 2) {
+  if(incantation.length < 3) {
     return res.status(400).json({
-      message: '"incantation" must be at least 10 characters long'
+      message: '"incantation" must be at least 3 characters long'
     })
   }
   next()
@@ -149,6 +149,43 @@ const validateEffect = async (req, res, next) => {
   next()
 }
 
+const validateType = async(req, res, next) => {
+  const { type } = req.body;
+  if(!type) {
+    return res.status(400).json({
+      message: '"type" is required'
+    })
+  }
+  const typeExists = await typeService.getTypeByName(type);
+  if(typeExists.status === 404) {
+    return res.status(400).json({
+      message: '"type" must be an existing type'
+    })
+  }
+  next()
+}
+
+const validateNewType = async (req, res, next) =>{
+  const typeExists = await typeService.getTypeByName(req.body.name);
+  const { name } = req.body;
+  if(!name) {
+    return res.status(400).json({
+      message: '"name" is required'
+    })
+  }
+  if(name.length < 3) {
+    return res.status(400).json({
+      message: '"name" must be at least 3 characters long'
+    })
+  }
+  if(typeExists.status === 200) {
+    return res.status(400).json({
+      message: 'this "type" already exists'
+    })
+  }
+  next()
+}
+
 module.exports = {
   validateLoginBody,
   validateUserName,
@@ -159,5 +196,7 @@ module.exports = {
   validateSpellName,
   validateDescription,
   validateIncantation,
-  validateEffect
+  validateEffect,
+  validateType,
+  validateNewType
 }

@@ -5,18 +5,19 @@ const {
   validateSpellName,
   validateEffect,
   validateDescription,
-  validateIncantation
+  validateIncantation,
+  validateType
 } = require('../middlewares/validations');
 const router = express.Router();
 
-router.get('/',
+router.get('/', validateToken, spellController.getAllSpells);
+router.post('/',
 validateToken,
 validateSpellName,
 validateDescription,
 validateIncantation,
 validateEffect,
-spellController.getAllSpells);
-router.post('/', validateToken, spellController.createSpell)
+validateType, spellController.createSpell)
 router.get('/:id', validateToken, spellController.getSpellById);
 router.delete('/:id', validateToken, spellController.deleteSpell);
 

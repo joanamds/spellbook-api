@@ -28,10 +28,10 @@ const deleteSpell = async (req, res) => {
 const createSpell = async (req, res) => {
   const { authorization } = req.headers;
   const data = decodedToken(authorization)
-  const { spellName, description, incantation, effect, types } = req.body;
+  const { spellName, description, incantation, effect, type } = req.body;
 
   if(data.role === 'admin') {
-    const { status, message } = await spellService.createSpell({ spellName, description, incantation, effect, types })
+    const { status, message } = await spellService.createSpell({ spellName, description, incantation, effect, type })
     return res.status(status).json(message)
   }
 

@@ -1,9 +1,11 @@
 const loginController = require('./login.controller');
 const userController = require('./user.controller');
-const spellController = require('./spell.controller')
+const spellController = require('./spell.controller');
+const typeController = require('./type.controller');
 
 module.exports = {
   loginController,
   userController,
-  spellController
+  spellController,
+  typeController
 }
