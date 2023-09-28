@@ -27,5 +27,6 @@ const deleteSpell = async (req, res) => {
 
 module.exports = {
   getAllSpells,
-  deleteSpell
+  deleteSpell,
+  getSpellById
 }

@@ -24,9 +24,9 @@ const getAllSpells = async () => {
 }
 
 const getSpellById = async (id) => {
-  const spell = await Spell.findByPk(
-    { where: { id }},
-    { attributes: ['id', 'spellName', 'description', 'incantation', 'effect'],
+  const spell = await Spell.findOne({
+    where: { id },
+    attributes: ['id', 'spellName', 'description', 'incantation', 'effect'],
     include: [
       {
         model: Type,
