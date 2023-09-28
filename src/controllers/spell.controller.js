@@ -2,8 +2,14 @@ const { spellService } = require('../services');
 const { decodedToken } = require('../auth/validateJWT');
 
 const getAllSpells = async (req, res) => {
-  const spells = await spellService.getAllSpells();
-  return res.status(200).json(spells)
+  const { status, message} = await spellService.getAllSpells();
+  return res.status(status).json(message)
+}
+
+const getSpellById = async (req, res) => {
+  const { id } = req.params;
+  const { status, message } = await spellService.getSpellById(Number(id));
+  return res.status(status).json(message);
 }
 
 const deleteSpell = async (req, res) => {

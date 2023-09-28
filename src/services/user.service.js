@@ -11,20 +11,20 @@ const createUser = async ({ userName, house, email, password, role }) => {
 
   const token = jwt.sign({ data: { userId: newUserId, role } }, secret, jwtConfig);
 
-  return { status: null, message: token }
+  return { status: 200, message: token }
 }
 
 const getUsers = async () => {
   const users = await User.findAll({ attributes: { exclude: ['password'] }});
-  return { status: null, message: users };
+  return { status: 200, message: users };
 }
 
 const getUserById = async (id) => {
-  const user = await User.findByPk(id);
+  const user = await User.findByPk(id, { attributes: { exclude: ['password'] }});
   if(!user) {
     return { status: 404, message: { message: 'User not found'}}
   }
-  return { status: null, message: user };
+  return { status: 200, message: user };
 }
 
 const deleteUser = async (userId) => {

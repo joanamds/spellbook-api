@@ -3,24 +3,19 @@ const { userService } = require('../services');
 const createUser = async (req, res) => {
   const { status, message } = await userService.createUser(req.body);
 
-  if(status) return res.status(status).json(message);
-
-  return res.status(201).send(message);
+  return res.status(status).send(message);
 };
 
 const getUsers = async (req, res) => {
-  const { message } = await userService.getUsers();
-  res.status(200).json(message);
+  const { status, message } = await userService.getUsers();
+  res.status(status).json(message);
 }
 
 const getUserById = async (req, res) => {
   const { id } = req.params;
   const { status, message } = await userService.getUserById(id);
-  if(status) {
-    return res.status(status).json(message);
-  }
 
-  return res.status(200).json(message)
+  return res.status(status).json(message)
 }
 
 const deleteUser = async (req, res) => {
