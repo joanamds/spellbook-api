@@ -7,9 +7,12 @@ Então que tal uma API com feitiços administrada por ninguém mais ninguém men
 
 Este código foi desenvolvido para uma monitoria estruturada para praticar os conceitos da criação de API utilizando Node.js, Sequelize e JWT.
 
-Requisitos desenvolvidos
+## Requisitos desenvolvidos
 - [ ] 1. Criação das migrations 'users', 'types', 'spells', 'spells-types'
 - [ ] 2. Criação das models de 'users', 'types', 'spells', 'spells-types'
 - [ ] 3. Criação das services 'users','types', 'spells', 'spells-types', implementando o JWT no login
 - [ ] 4. Criação das controllers
 
+## Branches da aplicação
+- `main` - código desenvolvido durante a monitoria
+- `completed-api` - código desenvolvido depois da monitoria para finalizar a api
