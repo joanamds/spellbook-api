@@ -11,7 +11,7 @@ const createUser = async ({ userName, house, email, password, role }) => {
 
   const token = jwt.sign({ data: { userId: newUserId, role } }, secret, jwtConfig);
 
-  return { status: 200, message: token }
+  return { status: 200, message: { token } }
 }
 
 const getUsers = async () => {
