@@ -45,6 +45,13 @@ const getSpellById = async (id) => {
   return { status: 200, message: spellFormatted };
 }
 
+const createSpell = async(spell) => {
+  const { spellName, description, incantation, effect, types } = spell;
+  const newSpell = await Spell.create({ spellName, description, incantation, effect });
+  await newSpell.setTypes(types);
+  return { status: 201, message: newSpell };
+}
+
 const deleteSpell =  async (id) => {
   await Spell.destroy({
     where: { id },
@@ -54,5 +61,6 @@ const deleteSpell =  async (id) => {
 module.exports = {
   getAllSpells,
   deleteSpell,
-  getSpellById
+  getSpellById,
+  createSpell
 }

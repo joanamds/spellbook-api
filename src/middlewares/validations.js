@@ -89,11 +89,75 @@ const validateRole = (req, res, next) => {
   next()
 }
 
+const validateSpellName = async(req, res, next) => {
+  const { spellName } = req.body;
+  if(!spellName) {
+    return res.status(400).json({
+      message: '"spellName" is required'
+    })
+  }
+  if(spellName.length < 2) {
+    return res.status(400).json({
+      message: '"spellName" must be at least 2 characters long'
+    })
+  }
+  next()
+}
+
+const validateDescription = async (req, res, next) => {
+  const { description } = req.body;
+  if(!description) {
+    return res.status(400).json({
+      message: '"description" is required'
+    })
+  }
+  if(description.length < 10) {
+    return res.status(400).json({
+      message: '"description" must be at least 10 characters long'
+    })
+  }
+  next()
+}
+
+const validateIncantation = async (req, res, next) => {
+  const { incantation } = req.body;
+  if(!incantation) {
+    return res.status(400).json({
+      message: '"incantation" is required'
+    })
+  }
+  if(incantation.length < 2) {
+    return res.status(400).json({
+      message: '"incantation" must be at least 10 characters long'
+    })
+  }
+  next()
+}
+
+const validateEffect = async (req, res, next) => {
+  const { effect } = req.body;
+  if(!effect) {
+    return res.status(400).json({
+      message: '"effect" is required'
+    })
+  }
+  if(effect.length < 4) {
+    return res.status(400).json({
+      message: '"effect" must be at least 4 characters long'
+    })
+  }
+  next()
+}
+
 module.exports = {
   validateLoginBody,
   validateUserName,
   validateEmail,
   validatePassword,
   validateHouse,
-  validateRole
+  validateRole,
+  validateSpellName,
+  validateDescription,
+  validateIncantation,
+  validateEffect
 }

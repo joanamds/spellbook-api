@@ -25,8 +25,22 @@ const deleteSpell = async (req, res) => {
   return res.status(401).json({ message: 'Unauthorized user'})
 }
 
+const createSpell = async (req, res) => {
+  const { authorization } = req.headers;
+  const data = decodedToken(authorization)
+  const { spellName, description, incantation, effect, types } = req.body;
+
+  if(data.role === 'admin') {
+    const { status, message } = await spellService.createSpell({ spellName, description, incantation, effect, types })
+    return res.status(status).json(message)
+  }
+
+  return res.status(401).json({ message: 'Unauthorized user'})
+}
+
 module.exports = {
   getAllSpells,
   deleteSpell,
-  getSpellById
+  getSpellById,
+  createSpell,
 }
